@@ -7,7 +7,7 @@ import java.util.Date;
 public class FeriasModel {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
