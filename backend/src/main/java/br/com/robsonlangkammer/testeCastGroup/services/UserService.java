@@ -2,6 +2,7 @@ package br.com.robsonlangkammer.testeCastGroup.services;
 
 import br.com.robsonlangkammer.testeCastGroup.bean.ResultResponseList;
 import br.com.robsonlangkammer.testeCastGroup.form.UsuarioForm;
+import br.com.robsonlangkammer.testeCastGroup.model.EquipeModel;
 import br.com.robsonlangkammer.testeCastGroup.model.Perfil;
 import br.com.robsonlangkammer.testeCastGroup.model.UserModel;
 import br.com.robsonlangkammer.testeCastGroup.repository.PerfilRepository;
@@ -73,6 +74,32 @@ public class UserService {
 
         return  userRepository.saveAndFlush(u);
 
+    }
+
+
+
+    public ResultResponseList searchFeriasVencendo(Pageable paginacao, String campo) {
+
+        ResultResponseList resultResponseList = new ResultResponseList();
+
+        Page<UserModel> listPage = userRepository.findByNome(campo, paginacao);
+
+        if(campo.isEmpty()){
+            resultResponseList.setTotalElements(userRepository.count());
+            resultResponseList.setTotalPages(listPage.getTotalPages());
+        }
+        else{
+            resultResponseList.setTotalElements(listPage.getTotalElements());
+            resultResponseList.setTotalPages(listPage.getTotalPages());
+
+        }
+
+        if(listPage.getContent()!=null)
+            resultResponseList.setData((List<Object>) (List) listPage.getContent());
+        else
+            resultResponseList.setData(null);
+
+        return resultResponseList;
     }
 
 }

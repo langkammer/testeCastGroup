@@ -3,8 +3,10 @@ package br.com.robsonlangkammer.testeCastGroup.controller;
 
 import br.com.robsonlangkammer.testeCastGroup.bean.EvenlopResponse;
 import br.com.robsonlangkammer.testeCastGroup.bean.ResultResponseList;
+import br.com.robsonlangkammer.testeCastGroup.model.FeriasModel;
 import br.com.robsonlangkammer.testeCastGroup.model.FuncionarioModel;
 import br.com.robsonlangkammer.testeCastGroup.repository.FuncionarioRepository;
+import br.com.robsonlangkammer.testeCastGroup.services.FeriasService;
 import br.com.robsonlangkammer.testeCastGroup.services.UserService;
 import br.com.robsonlangkammer.testeCastGroup.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,11 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/funcionario")
-public class FuncionarioController extends ResponseFactory {
+@RequestMapping("/ferias")
+public class FeriasController extends ResponseFactory {
 
     @Autowired
-    UserService service;
+    FeriasService service;
 
     @Autowired
     FuncionarioRepository repository;
@@ -32,6 +34,20 @@ public class FuncionarioController extends ResponseFactory {
                                                 @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
         try{
             ResultResponseList r = service.searchFeriasVencendo(paginacao,nome);
+            return returnEnvelopSucessoList(r.getData(),r.getTotalPages(),r.getTotalElements(),"Operação Realizada com Sucesso");
+        }
+        catch (Exception e){
+            return returnEnvelopError("Erro ao realizar a Operaçãp " + e.getMessage());
+
+        }
+    }
+
+
+    @GetMapping(name = "/listByMatricula")
+    public EvenlopResponse listFeriasByMatricula(@RequestParam(value = "matricula", required = false, defaultValue = "") String matricula,
+                                                @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
+        try{
+            ResultResponseList r = service.searchByMatricula(paginacao,matricula);
             return returnEnvelopSucessoList(r.getData(),r.getTotalPages(),r.getTotalElements(),"Operação Realizada com Sucesso");
         }
         catch (Exception e){
@@ -57,9 +73,9 @@ public class FuncionarioController extends ResponseFactory {
     }
 
     @PostMapping
-    public EvenlopResponse create(@RequestBody FuncionarioModel funcionario){
+    public EvenlopResponse create(@RequestBody FeriasModel ferias){
         try{
-            return  returnEnvelopSucesso(repository.save(funcionario),"Operação Realizada com Sucesso");
+            return  returnEnvelopSucesso(service.cadastrarFerias(ferias),"Operação Realizada com Sucesso");
         }catch (Exception e){
             return returnEnvelopError("Não Foi criar Equipe");
         }
