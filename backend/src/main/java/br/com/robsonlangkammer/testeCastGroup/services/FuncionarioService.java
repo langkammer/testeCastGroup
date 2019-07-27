@@ -4,6 +4,7 @@ import br.com.robsonlangkammer.testeCastGroup.bean.ResultResponseList;
 import br.com.robsonlangkammer.testeCastGroup.form.FuncionarioForm;
 import br.com.robsonlangkammer.testeCastGroup.model.FuncionarioModel;
 import br.com.robsonlangkammer.testeCastGroup.repository.FuncionarioRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,21 +48,21 @@ public class FuncionarioService {
     }
 
 
-    public FuncionarioModel criarFuncionario(FuncionarioForm funcionarioForm,MultipartFile foto){
+    public FuncionarioModel criarFuncionario(MultipartFile foto,String funcString) throws Exception{
 
         if(!foto.isEmpty())
         {
-            FuncionarioModel funcionarioModel = funcionarioForm.getFuncionario();
-            //subindo upload da foto
+            ObjectMapper mapper = new ObjectMapper();
+            FuncionarioModel funcionarioModel = mapper.readValue(funcString, FuncionarioModel.class);
             String fotoName =  fileStorageService.storeFile(foto);
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/downloadFile/")
+                    .path("/getFoto/")
                     .path(fotoName)
                     .toUriString();
 
             funcionarioModel.setFoto(fileDownloadUri);
 
-            return repository.save(funcionarioModel);
+            return repository.saveAndFlush(funcionarioModel);
         }
         else{
             return null;

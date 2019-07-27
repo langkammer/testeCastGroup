@@ -24,15 +24,4 @@ public class TesteCastGroupApplication {
 		SpringApplication.run(TesteCastGroupApplication.class, args);
 	}
 
-	@Bean
-	public MultipartConfigElement multipartConfigElement() {
-		return new MultipartConfigElement("");
-	}
-
-	@Bean
-	public MultipartResolver multipartResolver() {
-		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-		resolver.setMaxUploadSize(1000000);
-		return resolver;
-	}
 }
