@@ -1,3 +1,102 @@
-<p>
-  nav works!
-</p>
+<!--The content below is only a placeholder and can be replaced.-->
+<block-ui>
+  <span class="sr-only">Carregando...</span>
+</block-ui>
+<div>
+<app-header [sidenav]="leftSidenav"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #leftSidenav mode="side" opened>
+    <app-left-menu></app-left-menu>
+  </mat-sidenav>
+  <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
+    <div class="main_content">
+      <div style="padding: 20px">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+</div>
+<!-- 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="home">
+        <span class="badge badge-primary">Aposta da Galera</span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+          </ul>
+          <ul class="navbar-nav" >
+              <li class="nav-item" *ngIf="email">
+                  <div class="nav-link">
+                      Email : {{email}}
+                  </div>
+                </li>
+          </ul>
+          <ul class="navbar-nav" routerLinkActive="active" *ngIf="email">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="apostador/resultados">
+                  <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                  Resultados
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="apostador/apostas">
+                  <i class="fa fa-arrows-h" aria-hidden="true"></i>
+                  Minhas apostas
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Gerente de Aposta
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+    
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="apostador/grupos">
+                    Meus Grupos de Apostas
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                  </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" *ngIf="isAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Administrador
+                  <i class="fa fa-wrench" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" routerLink="admin/user">
+                  Usuarios
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                </a>
+                <a class="dropdown-item"  routerLink="admin/ligas">
+                  Ligas
+                  <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item"    *ngIf="email">
+              <a class="nav-link" (click)="logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout
+              </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav" routerLinkActive="active" *ngIf="!email">
+          <li class="nav-item"  routerLinkActive="active" >
+            <a class="nav-link" routerLink="login">Login</a>
+          </li>
+        </ul>
+    </div>
+  </nav>  -->
+
+<!-- <div class="container">
+  <router-outlet></router-outlet>
+</div> -->

@@ -20,8 +20,10 @@ import javax.servlet.MultipartConfigElement;
 })
 public class TesteCastGroupApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(TesteCastGroupApplication.class, args);
 	}
+
 
 }

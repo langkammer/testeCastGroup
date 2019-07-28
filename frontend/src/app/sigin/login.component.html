@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+            <div class="card-body">
+              <h5 class="card-title text-center">Entrar</h5>
+              <form class="form-signin" [formGroup]="loginForm" >
+                  <mat-form-field class="modal-full-width">
+                      <input type="email" matInput [(ngModel)]="emailForm" name="email"  placeholder="Email" formControlName="email" required>
+                  </mat-form-field>
+                  <mat-form-field class="modal-full-width">
+                    <input type="password" matInput [(ngModel)]="senhaForm" name="senha" placeholder="Senha"  formControlName="senha" required>
+                  </mat-form-field>
+              </form>
+                  <p></p>  
+                  <button  mat-raised-button (click)="login()" style="width: 100%"  color="primary">Login</button>
+                  <p></p>
+            </div>
+      </div>
+    </div>
+</div>

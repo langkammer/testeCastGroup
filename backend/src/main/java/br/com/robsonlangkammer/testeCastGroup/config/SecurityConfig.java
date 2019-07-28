@@ -50,7 +50,9 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/h2/**").permitAll()
                 .and()
-                .authorizeRequests().antMatchers(HttpMethod.POST,"/auth").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.OPTIONS, "**").permitAll()//allow CORS option calls
+                .and()
+                .authorizeRequests().antMatchers("/auth").permitAll()
                 .and()
                 .authorizeRequests().antMatchers(HttpMethod.POST,"/sign").permitAll()
                 .anyRequest().authenticated()

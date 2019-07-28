@@ -1,0 +1,21 @@
+<div fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px" class="header">
+    <button mat-icon-button (click)="sidenav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <span>Teste ROBSON EMILIO LANGKAMMER CAST GROUP</span>
+    <span class="spacer"></span>
+  
+</div>
+
+<div fxFlex="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="header">
+
+
+    <mat-nav-list>
+        <a mat-list-item *ngIf="logado" (click)="deslogar()">
+            <mat-icon style="padding-right:5px;">exit_to_app</mat-icon>
+            <span >Sair </span>
+        </a>
+    </mat-nav-list>
+  
+</div>

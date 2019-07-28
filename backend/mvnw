@@ -175,12 +175,12 @@ find_maven_basedir() {
   basedir="$1"
   wdir="$1"
   while [ "$wdir" != '/' ] ; do
-    if [ -d "$wdir"/.mvn ] ; then
+    if [ -data.sql "$wdir"/.mvn ] ; then
       basedir=$wdir
       break
     fi
     # workaround for JBEAP-8937 (on Solaris 10/Sparc)
-    if [ -d "${wdir}" ]; then
+    if [ -data.sql "${wdir}" ]; then
       wdir=`cd "$wdir/.."; pwd`
     fi
     # end of workaround

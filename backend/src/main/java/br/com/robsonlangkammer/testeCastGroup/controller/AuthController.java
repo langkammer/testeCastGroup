@@ -5,7 +5,6 @@ import br.com.robsonlangkammer.testeCastGroup.security.TokenService;
 import br.com.robsonlangkammer.testeCastGroup.dto.TokenDto;
 import br.com.robsonlangkammer.testeCastGroup.form.LoginForm;
 import br.com.robsonlangkammer.testeCastGroup.util.ResponseFactory;
-import com.sun.xml.internal.messaging.saaj.soap.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/auth")
+@CrossOrigin("*")
 public class AuthController extends ResponseFactory {
 
     @Autowired
