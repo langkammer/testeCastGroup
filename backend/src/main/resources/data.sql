@@ -4,8 +4,8 @@ INSERT INTO USER_MODEL(id,email,nome,pass) VALUES(1,'robsonlangkammer@hotmail.co
 INSERT INTO USER_MODEL_PERFIL(USER_MODEL_ID, PERFIL_ID ) VALUES (1,1);
 INSERT INTO ENDERECO_MODEL(id,rua,numero,complemento,bairro,cidade,estado) VALUES(1,'RUA 1','12','CASA','VENDA NOVA','BELO HORIZONTE','MG');
 INSERT INTO EQUIPE_MODEL(id,nome,data) VALUES(1,'EQUIPE TESTE1','2019-01-01');
-INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(1,'1','ROBSON EMILIO','1989-01-06',1,'2016-06-06','https://cdn.icon-icons.com/icons2/37/PNG/512/collaborator_theapplication_theuser_2910.png',1);
-INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(2,'2','MARCOS','1989-01-06',1,'2017-06-06','https://cdn.icon-icons.com/icons2/37/PNG/512/collaborator_theapplication_theuser_2910.png',1);
-INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(3,'3','DANIEL','1989-01-06',1,'2018-06-06','https://cdn.icon-icons.com/icons2/37/PNG/512/collaborator_theapplication_theuser_2910.png',1);
-INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(4,'4','MATHEUS','1989-01-06',1,'2018-06-06','https://cdn.icon-icons.com/icons2/37/PNG/512/collaborator_theapplication_theuser_2910.png',1);
+INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(1,'1','ROBSON EMILIO','1989-01-06',1,'2016-06-06','https://image.flaticon.com/icons/png/512/9/9463.png',1);
+INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(2,'2','MARCOS','1989-01-06',1,'2017-06-06','https://image.flaticon.com/icons/png/512/9/9463.png',1);
+INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(3,'3','DANIEL','1989-01-06',1,'2018-06-06','https://image.flaticon.com/icons/png/512/9/9463.png',1);
+INSERT INTO FUNCIONARIO_MODEL(id,matricula,nome,data_nascimento,endereco_id,data_admissao,foto,equipe_id) VALUES(4,'4','MATHEUS','1989-01-06',1,'2018-06-06','https://image.flaticon.com/icons/png/512/9/9463.png',1);
 INSERT INTO FERIAS_MODEL (id,data_final,data_inicial,funcionario_id) VALUES(1,'2016-06-06','2016-07-06',1);

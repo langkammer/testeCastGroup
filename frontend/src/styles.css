@@ -38,6 +38,9 @@ html {
 width: 100%;
 }
 
+.fift-width {
+  width: 50%;
+}
 .column-right{
     text-align: right;
 }

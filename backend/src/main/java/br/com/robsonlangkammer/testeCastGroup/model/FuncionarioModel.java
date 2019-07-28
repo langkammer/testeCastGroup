@@ -1,5 +1,7 @@
 package br.com.robsonlangkammer.testeCastGroup.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,11 +17,13 @@ public class FuncionarioModel {
 
     private String nome;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dataNascimento;
 
     @OneToOne
     private EnderecoModel endereco;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dataAdmissao;
 
     private String foto;

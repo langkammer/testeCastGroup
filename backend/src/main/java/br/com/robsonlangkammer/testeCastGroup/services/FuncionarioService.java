@@ -27,7 +27,7 @@ public class FuncionarioService {
 
         ResultResponseList resultResponseList = new ResultResponseList();
 
-        Page<FuncionarioModel> listPage = repository.findByNome(campo, paginacao);
+        Page<FuncionarioModel> listPage = repository.findByNomeContaining(campo, paginacao);
 
         if(campo.isEmpty()){
             resultResponseList.setTotalElements(repository.count());

@@ -64,7 +64,7 @@ public class FuncionarioController extends ResponseFactory {
             @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
         try{
 
-            ResultResponseList r = service.search(paginacao,nome);
+            ResultResponseList r = funcionarioService.search(paginacao,nome);
 
             return returnEnvelopSucessoList(r.getData(),r.getTotalPages(),r.getTotalElements(),"Operação Realizada com Sucesso");
         }

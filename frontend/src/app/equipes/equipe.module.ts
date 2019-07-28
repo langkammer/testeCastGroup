@@ -14,8 +14,7 @@ import { BottonButtonComponent } from '../shared/bottom/bottom-button.component'
 @NgModule({
   declarations: [
     CadEquipeComponent,
-    ListaEquipesComponent,
-    BottonButtonComponent
+    ListaEquipesComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +29,9 @@ import { BottonButtonComponent } from '../shared/bottom/bottom-button.component'
   exports :[
     CadEquipeComponent,
     ListaEquipesComponent
-  ]
+  ],
+  entryComponents: [BottonButtonComponent,CadEquipeComponent]
+
 })
 export class EquipeModule {
 }

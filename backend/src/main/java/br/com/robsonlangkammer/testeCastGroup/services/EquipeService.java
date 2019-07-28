@@ -21,7 +21,7 @@ public class EquipeService {
 
         ResultResponseList resultResponseList = new ResultResponseList();
 
-        Page<EquipeModel> listPage = repository.findByNome(campo, paginacao);
+        Page<EquipeModel> listPage = repository.findByNomeContaining(campo, paginacao);
 
         if(campo.isEmpty()){
             resultResponseList.setTotalElements(repository.count());

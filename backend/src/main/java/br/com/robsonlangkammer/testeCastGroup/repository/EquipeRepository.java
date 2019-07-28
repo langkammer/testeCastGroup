@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface EquipeRepository extends JpaRepository<EquipeModel, Long> {
 
-    Page<EquipeModel> findByNome(@Param("nome") String nome, Pageable pageable);
+    Page<EquipeModel> findByNomeContaining(@Param("nome") String nome, Pageable pageable);
 
 }

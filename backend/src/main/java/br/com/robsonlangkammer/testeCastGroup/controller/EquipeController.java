@@ -26,6 +26,17 @@ public class EquipeController extends ResponseFactory {
     EquipeRepository equipeRepository;
 
 
+    @GetMapping(path = "/all")
+    public EvenlopResponse all(){
+        try{
+
+            return returnEnvelopSucesso(equipeRepository.findAll(),"Operação Realizada com Sucesso");
+        }
+        catch (Exception e){
+            return returnEnvelopError("Erro ao realizar a Operaçãp " + e.getMessage());
+
+        }
+    }
     @GetMapping
     public EvenlopResponse list(
             @RequestParam(value = "nome", required = false, defaultValue = "") String nome,

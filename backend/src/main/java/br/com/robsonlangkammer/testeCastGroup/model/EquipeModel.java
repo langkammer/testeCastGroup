@@ -1,5 +1,7 @@
 package br.com.robsonlangkammer.testeCastGroup.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,8 @@ public class EquipeModel {
 
     private String nome;
 
-    private Date data;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private Date data = new Date();
 
     public Long getId() {
         return id;

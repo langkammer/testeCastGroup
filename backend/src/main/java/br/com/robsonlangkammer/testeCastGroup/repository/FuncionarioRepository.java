@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, Long> {
 
-    Page<FuncionarioModel> findByNome(@Param("nome") String nome, Pageable pageable);
+    Page<FuncionarioModel> findByNomeContaining(@Param("nome") String nome, Pageable pageable);
 
 }

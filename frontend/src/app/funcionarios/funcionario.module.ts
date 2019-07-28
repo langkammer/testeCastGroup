@@ -8,12 +8,15 @@ import { BlockUIModule } from 'ng-block-ui';
 import { CadFuncionarioComponent } from './cad-funcionario/cad-funcionario.component';
 import { ListaFuncionariosComponent } from './lista-funcionarios/lista-funcionarios.component';
 import { MyMaterialModule } from '../material-module';
+import { BottonButtonComponent } from '../shared/bottom/bottom-button.component';
 
 
 @NgModule({
   declarations: [
-    CadFuncionarioComponent,
-    ListaFuncionariosComponent
+    ListaFuncionariosComponent,
+    BottonButtonComponent,
+    CadFuncionarioComponent
+
   ],
   imports: [
     CommonModule,
@@ -28,6 +31,8 @@ import { MyMaterialModule } from '../material-module';
   exports : [
     CadFuncionarioComponent,
     ListaFuncionariosComponent
-  ]
+  ],
+  entryComponents: [BottonButtonComponent,CadFuncionarioComponent]
+
 })
 export class FuncionarioModule { }

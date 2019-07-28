@@ -1,3 +1,117 @@
-<p>
-  cad-funcionario works!
-</p>
+<h1 mat-dialog-title>{{data.action}} Funcionario </h1>
+
+<div mat-dialog-content>
+    <form class="modal-form" [formGroup]="form"  (submit)="confirmar()" >
+        <hr>
+        <p>Dados Cadastrais</p>
+        <mat-card>
+            <div class="row">
+                <div  class="col-md-6">
+                    <img *ngIf="foto" [ngfSrc]="foto" height="50px" width="50px">
+                </div>
+                <div  class="col-md-6">
+                    <input type="file" [(file)]="foto" accept="image/*" formControlName="fotoForm" class="custom-file-input" id="validatedCustomFile">
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                </div>
+            </div>
+        </mat-card>
+        <mat-form-field  class="full-width" appearance="outline">
+            <mat-label>Equipe de Trabalho</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let e of equipes" [value]="e">
+                    {{e.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nome do Funcionario</mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="funcionario.nome"
+            name="nome"
+            formControlName="nomeForm"
+            >
+            <mat-error *ngIf="form.get('nomeForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Data Nascimento</mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="funcionario.dataNascimento"
+            name="dataNascimento"
+            formControlName="dataNascimentoForm"
+            >
+            <mat-error *ngIf="form.get('dataNascimentoForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <hr>
+        <p>Endereço</p>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Rua </mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="endereco.rua"
+            name="rua"
+            formControlName="ruaForm"
+            >
+            <mat-error *ngIf="form.get('ruaForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Numero </mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="endereco.numero"
+            name="numero"
+            formControlName="numeroForm"
+            >
+            <mat-error *ngIf="form.get('numeroForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Complemento </mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="endereco.complemento"
+            name="complemento"
+            formControlName="complementoForm"
+            >
+            <mat-error *ngIf="form.get('complementoForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Bairro </mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="endereco.bairro"
+            name="bairro"
+            formControlName="bairroForm"
+            >
+            <mat-error *ngIf="form.get('bairroForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Cidade </mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="endereco.cidade"
+            name="cidade"
+            formControlName="cidadeForm"
+            >
+            <mat-error *ngIf="form.get('cidadeForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Estado </mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="endereco.estado"
+            name="estado"
+            formControlName="estadoForm"
+            >
+            <mat-error *ngIf="form.get('estadoForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="center">
+   
+    <span class="spacer"></span>
+    <button  mat-raised-button (click)="confirmar()"  style="width: 100%"  color="accent" [disabled]="data.action == 'Ver'">Confirmar</button>
+    <span class="spacer"></span>
+    <button mat-button [mat-dialog-close]="true" (click)="cancelar()"  color="warn" >Cancelar</button>
+
+</div>
