@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidenavService } from '../../services/sidenav.service'
 import { onSideNavChange, animateText } from 'src/app/animations/animations';
+import { UserService } from 'src/app/services/user.service';
 
 
 interface Page {
@@ -19,6 +20,8 @@ export class LeftMenuComponent implements OnInit {
   public sideNavState: boolean = false;
   public linkText: boolean = false;
 
+
+  nameUser:string;
   public pages: Page[] = [
 
     {name: 'Cad. Equipe', rota:'equipes', icon: 'group'},
@@ -27,9 +30,11 @@ export class LeftMenuComponent implements OnInit {
 
   ]
 
-  constructor(private _sidenavService: SidenavService) { }
+  constructor(private _sidenavService: SidenavService,private user: UserService) { }
 
   ngOnInit() {
+    this.nameUser = this.user.getUserName();
+    console.log(this.nameUser)
   }
 
   onSinenavToggle() {

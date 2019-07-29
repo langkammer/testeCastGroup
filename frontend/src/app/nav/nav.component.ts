@@ -22,7 +22,6 @@ export class NavBarComponent implements OnInit {
 
   public onSideNavChange: boolean;
 
-
   constructor(
     private _sidenavService: SidenavService
     ) 
@@ -32,13 +31,10 @@ export class NavBarComponent implements OnInit {
       this.onSideNavChange = res;
     })
 
-  
 
   } 
 
   ngOnInit(): void {
-   
-
    
   }
 
@@ -47,13 +43,6 @@ export class NavBarComponent implements OnInit {
   }
 
 
-  
 
-  carregaDefinicoesPerfil(email){
-    
-
-    
-   
-  }
 
 }

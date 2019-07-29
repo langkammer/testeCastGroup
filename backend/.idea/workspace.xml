@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="eb211b56-f6fa-4cbc-9dea-693d2cce024f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/controller/EquipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/controller/EquipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/controller/FuncionarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/controller/FuncionarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/model/EquipeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/model/EquipeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/model/FeriasModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/model/FeriasModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/model/FuncionarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/model/FuncionarioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/repository/EquipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/repository/EquipeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/repository/FuncionarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/services/EquipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/services/EquipeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/services/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/robsonlangkammer/testeCastGroup/services/FuncionarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/funcionarios/cad-funcionario/cad-funcionario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/funcionarios/cad-funcionario/cad-funcionario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/funcionarios/cad-funcionario/cad-funcionario.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/funcionarios/cad-funcionario/cad-funcionario.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

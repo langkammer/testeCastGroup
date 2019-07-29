@@ -37,20 +37,51 @@ export class GenericService {
 
   /// services funcionario
 
+  
   listarFuncionarios(page,size,nome) {
     return this.request.get('/funcionario');
   }
 
-  criarFuncionario(equipe: any){
-    return this.request.post('/funcionario', equipe);
+  criarFuncionario(data: any){
+    return this.request.post('/funcionario', data);
   }
 
-  updateFuncionario(equipe: any){
-    return this.request.put('/funcionario', equipe);
+  updateFuncionario(data: any){
+    return this.request.put('/funcionario', data);
   }
 
   deleteFuncionario(id) {
     return this.request.delete('/funcionario/' + id);
+  }
+
+
+
+  /// services ferias
+
+
+  listBySolicitacaoFerias(page,size,nome) {
+    return this.request.get('/ferias');
+  }
+
+  listByFeriasVencendo(page,size,nome) {
+    return this.request.get('ferias/listByFeriasVencendo');
+  }
+
+  listFeriasByMatricula(page,size,nome) {
+    return this.request.get('ferias/listByMatricula');
+  }
+
+
+  criarFerias(data: any){
+    return this.request.post('/ferias', data);
+  }
+
+  updateFerias(data: any){
+    return this.request.put('/ferias', data);
+  }
+
+  deleteFerias(id) {
+    return this.request.delete('/ferias/' + id);
   }
 
 }

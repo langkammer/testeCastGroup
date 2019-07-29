@@ -56,7 +56,7 @@ public class FuncionarioService {
             FuncionarioModel funcionarioModel = mapper.readValue(funcString, FuncionarioModel.class);
             String fotoName =  fileStorageService.storeFile(foto);
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/getFoto/")
+                    .path("/funcionario/getFoto/")
                     .path(fotoName)
                     .toUriString();
 

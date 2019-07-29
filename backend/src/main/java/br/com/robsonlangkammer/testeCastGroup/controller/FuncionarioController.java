@@ -10,9 +10,12 @@ import br.com.robsonlangkammer.testeCastGroup.services.FuncionarioService;
 import br.com.robsonlangkammer.testeCastGroup.services.UserService;
 import br.com.robsonlangkammer.testeCastGroup.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,9 +53,11 @@ public class FuncionarioController extends ResponseFactory {
 //    }
 
     @GetMapping(path = "/getFoto/{fileName}")
-    public File getFile(@PathVariable String fileName){
+    public ResponseEntity<Resource> getFile(@PathVariable String fileName){
         try{
-            return (File) fileStorageService.loadFileAsResource(fileName);
+            Resource file = fileStorageService.loadFileAsResource(fileName);
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=\"" + file.getFilename() + "\"").body(file);
         }
         catch (Exception e){
             return null;

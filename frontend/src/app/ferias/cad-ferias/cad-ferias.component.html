@@ -1,3 +1,36 @@
-<p>
-  cad-ferias works!
-</p>
+<h1 mat-dialog-title>{{data.action}} Solicitar Férias </h1>
+
+<div mat-dialog-content>
+    <form class="modal-form" [formGroup]="form"  (submit)="confirmar()" >
+        <hr>
+        <p>{{ferias.funcionario.nome}}</p>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Data Inicial</mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="ferias.dataInicial"
+            name="dataInicial"
+            formControlName="dataInicialForm"
+            >
+            <mat-error *ngIf="form.get('dataInicialForm').errors?.required">Campo é Obrigátorio</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Data Final</mat-label>
+          <input type="text" 
+          matInput 
+          [(ngModel)]="ferias.dataFinal"
+          name="dataFinal"
+          formControlName="dataFinalForm"
+          >
+          <mat-error *ngIf="form.get('dataFinalForm').errors?.required">Campo é Obrigátorio</mat-error>
+      </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="center">
+   
+    <span class="spacer"></span>
+    <button  mat-raised-button (click)="confirmar()"  style="width: 100%"  color="accent" [disabled]="data.action == 'Ver'">Confirmar</button>
+    <span class="spacer"></span>
+    <button mat-button [mat-dialog-close]="true" (click)="cancelar()"  color="warn" >Cancelar</button>
+
+</div>

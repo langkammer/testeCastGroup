@@ -5,7 +5,7 @@ export interface DataBotton{
   showDelete:boolean;
   showView:boolean;
   showEdit:boolean;
-
+  showScFerias:boolean;
 }
 
 @Component({
@@ -18,6 +18,7 @@ export class BottonButtonComponent implements OnInit {
   showDelete:boolean = true;
   showView:boolean = true;
   showEdit:boolean = true;
+  showScFerias:boolean = false;
 
   ngOnInit(): void {
     console.log("INICIALIZAOU SUB MENU BOTTON")
@@ -28,6 +29,8 @@ export class BottonButtonComponent implements OnInit {
       this.showDelete = data.showDelete;
       this.showView = data.showView;
       this.showEdit = data.showEdit;
+      this.showScFerias = data.showScFerias;
+
     }  
     console.log(data);
   }

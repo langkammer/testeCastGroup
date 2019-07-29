@@ -9,6 +9,7 @@ import { CadFuncionarioComponent } from './cad-funcionario/cad-funcionario.compo
 import { ListaFuncionariosComponent } from './lista-funcionarios/lista-funcionarios.component';
 import { MyMaterialModule } from '../material-module';
 import { BottonButtonComponent } from '../shared/bottom/bottom-button.component';
+import { CadFeriasComponent } from '../ferias/cad-ferias/cad-ferias.component';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { BottonButtonComponent } from '../shared/bottom/bottom-button.component'
     CadFuncionarioComponent,
     ListaFuncionariosComponent
   ],
-  entryComponents: [BottonButtonComponent,CadFuncionarioComponent]
+  entryComponents: [BottonButtonComponent,CadFuncionarioComponent,CadFeriasComponent]
 
 })
 export class FuncionarioModule { }

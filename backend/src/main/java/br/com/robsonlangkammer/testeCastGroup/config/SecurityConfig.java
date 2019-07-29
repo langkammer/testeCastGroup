@@ -50,6 +50,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/h2/**").permitAll()
                 .and()
+                .authorizeRequests().antMatchers(HttpMethod.GET,"/funcionario/getFoto/**").permitAll()
+                .and()
                 .authorizeRequests().antMatchers(HttpMethod.OPTIONS, "**").permitAll()//allow CORS option calls
                 .and()
                 .authorizeRequests().antMatchers("/auth").permitAll()
@@ -66,5 +68,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/h2/**","/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
 
     }
+
+
 
 }

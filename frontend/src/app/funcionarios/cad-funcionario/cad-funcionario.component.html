@@ -7,21 +7,31 @@
         <mat-card>
             <div class="row">
                 <div  class="col-md-6">
-                    <img *ngIf="foto" [ngfSrc]="foto" height="50px" width="50px">
+                    <img *ngIf="funcionario.foto" [src]="funcionario.foto" height="50px" width="50px">
                 </div>
                 <div  class="col-md-6">
-                    <input type="file" [(file)]="foto" accept="image/*" formControlName="fotoForm" class="custom-file-input" id="validatedCustomFile">
-                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <input type="file" id="file" (change)="handleFileInput($event.target.files)" accept="image/*" formControlName="fotoForm" class="custom-file-input">
+                    <label class="custom-file-label" for="validatedCustomFile">Selecione uma foto...</label>
                 </div>
             </div>
         </mat-card>
         <mat-form-field  class="full-width" appearance="outline">
             <mat-label>Equipe de Trabalho</mat-label>
-            <mat-select>
+            <mat-select namme="equipe" formControlName="equipeForm" [(ngModel)]="equipe">
                 <mat-option *ngFor="let e of equipes" [value]="e">
                     {{e.nome}}
                 </mat-option>
             </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Data Admissao</mat-label>
+            <input type="text" 
+            matInput 
+            [(ngModel)]="funcionario.dataAdmissao"
+            name="dataAdmissao"
+            formControlName="dataAdmissaoForm"
+            >
+            <mat-error *ngIf="form.get('dataAdmissaoForm').errors?.required">Campo é Obrigátorio</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Nome do Funcionario</mat-label>

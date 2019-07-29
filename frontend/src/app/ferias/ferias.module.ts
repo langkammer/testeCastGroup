@@ -9,6 +9,7 @@ import { MyMaterialModule } from '../material-module';
 import { CadFeriasComponent } from './cad-ferias/cad-ferias.component';
 import { ListaFeriasComponent } from './lista-ferias/lista-ferias.component';
 import { ListaFuncionariosByLimiteComponent } from './lista-funcionarios-by-limite/lista-funcionarios-by-limite.component';
+import { BottonButtonComponent } from '../shared/bottom/bottom-button.component';
 @NgModule({
   declarations: [
     CadFeriasComponent,
@@ -29,7 +30,9 @@ import { ListaFuncionariosByLimiteComponent } from './lista-funcionarios-by-limi
     CadFeriasComponent,
     ListaFeriasComponent,
     ListaFuncionariosByLimiteComponent
-  ]
+  ],
+  entryComponents: [BottonButtonComponent,CadFeriasComponent]
+
 })
 export class FeriasModule {
 }

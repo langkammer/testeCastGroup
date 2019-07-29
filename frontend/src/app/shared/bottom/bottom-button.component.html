@@ -11,4 +11,8 @@
           <mat-icon>edit</mat-icon>
           <span mat-line>Editar</span>
         </a>
+        <a *ngIf="showScFerias" mat-list-item (click)="openMenu($event,'Ferias')">
+          <mat-icon>flight_takeoff</mat-icon>
+          <span mat-line>Solicitar Férias</span>
+        </a>
 </mat-nav-list>

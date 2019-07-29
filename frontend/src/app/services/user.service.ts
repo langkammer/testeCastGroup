@@ -29,6 +29,7 @@ export class UserService {
         const user = jtw_decode(token) as any;
         this.userName = user.name;
         this.userSubject.next(user);
+        console.log("A")
     }
 
     logout() {

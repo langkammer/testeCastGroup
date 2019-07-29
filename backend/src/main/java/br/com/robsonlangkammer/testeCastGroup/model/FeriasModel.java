@@ -1,5 +1,7 @@
 package br.com.robsonlangkammer.testeCastGroup.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,8 +15,10 @@ public class FeriasModel {
     @ManyToOne
     private FuncionarioModel funcionario;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dataInicial;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dataFinal;
 
     public Long getId() {

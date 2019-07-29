@@ -20,7 +20,7 @@ public class FuncionarioModel {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date dataNascimento;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private EnderecoModel endereco;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")

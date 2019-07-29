@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { GenericService } from 'src/app/services/generic.service';
 import { BottonButtonComponent } from 'src/app/shared/bottom/bottom-button.component';
 import { CadFuncionarioComponent } from '../cad-funcionario/cad-funcionario.component';
+import { CadFeriasComponent } from 'src/app/ferias/cad-ferias/cad-ferias.component';
 
 @Component({
   selector: 'app-lista-funcionarios',
@@ -49,7 +50,15 @@ export class ListaFuncionariosComponent implements OnInit {
   } 
 
   openMenu(equipe:any): void {
-    this.bottomSheet.open(BottonButtonComponent).afterDismissed().subscribe(
+    this.bottomSheet.open(BottonButtonComponent,
+      { 
+        data: {
+          showDelete : true,  
+          showView   : true,  
+          showEdit   : true, 
+          showScFerias : true
+        }
+      }).afterDismissed().subscribe(
       sucess => {
         if(!!sucess)
           this.vaiParaMenu(sucess,equipe);
@@ -91,7 +100,37 @@ export class ListaFuncionariosComponent implements OnInit {
   }
 
   vaiParaMenu(tip,obj:any){
-    this.openModal(tip,obj);
+    if(tip=="Ferias")
+      this.abreModalScFerias(tip,obj);
+    else
+      this.openModal(tip,obj);
+  }
+
+  abreModalScFerias(tipoCrud:String,funcionario:any){
+    console.log("Solicita Ferias");
+    if(!tipoCrud)
+      tipoCrud = "Nova";
+    const dialogRef = this.dialog.open(CadFeriasComponent, {
+      width: '600px',
+      data: {action: tipoCrud, 
+        obj: { 
+              funcionario : funcionario, 
+              dataInicial : undefined,
+              dataFinal : undefined
+        } 
+      }
+
+    });
+
+    dialogRef.afterClosed().subscribe((equipe: any)  => {
+      console.log('The dialog was closed');
+    //   this.animal = result;
+        console.log(equipe);
+        if(!!equipe){
+          this.loadPages();
+          this.msgService.open("Sc Ferias  ! : " , equipe)
+        }
+    });
   }
 
 }

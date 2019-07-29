@@ -27,7 +27,6 @@ import { RequestInterceptor } from './core/request.interceptor';
     HomeModule,
     UserModule,
     EquipeModule,
-    ngfModule,
     BlockUIModule.forRoot()
   ],
   exports : [
