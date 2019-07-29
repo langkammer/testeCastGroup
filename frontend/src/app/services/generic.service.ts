@@ -12,6 +12,12 @@ export class GenericService {
   ){}
 
 
+  //
+  getUsuario(idUser:number){
+    return this.request.get('/sign?idUser='+idUser);
+
+  }
+
   // services equipes
   listarEquipes(page,size,nome) {
     return this.request.get('/equipe');
@@ -57,10 +63,10 @@ export class GenericService {
 
 
   /// services ferias
-
-
-  listBySolicitacaoFerias(page,size,nome) {
-    return this.request.get('/ferias');
+  listBySolicitacaoFerias(page,size,pesquisa,campo,tipoPesquisa,meses) {
+    return this.request.get('/ferias?page='+page+
+    '&size='+size+'&pesquisa='+pesquisa+
+    '&campo='+campo+'&tipoPesquisa='+tipoPesquisa+'&meses='+meses);
   }
 
   listByFeriasVencendo(page,size,nome) {

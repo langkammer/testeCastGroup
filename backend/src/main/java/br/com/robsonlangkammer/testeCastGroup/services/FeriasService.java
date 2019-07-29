@@ -20,13 +20,19 @@ public class FeriasService {
     FeriasRepository repository;
 
 
-    public ResultResponseList search(Pageable paginacao, String campo) {
+    public ResultResponseList search(Pageable paginacao, String pesquisa, String campo) {
 
         ResultResponseList resultResponseList = new ResultResponseList();
 
-        Page<FeriasModel> listPage = repository.findByFuncionarioNomeContaining(campo, paginacao);
+        Page<FeriasModel> listPage = null;
 
-        if(campo.isEmpty()){
+        if(campo.equals("nome"))
+             listPage = repository.findByFuncionarioNomeContaining(pesquisa, paginacao);
+        else if(campo.equals("matricula"))
+              listPage = repository.findByFuncionarioMatricula(Long.parseLong(pesquisa),paginacao);
+
+
+        if(pesquisa.isEmpty()){
             resultResponseList.setTotalElements(repository.count());
             resultResponseList.setTotalPages(listPage.getTotalPages());
         }
@@ -117,11 +123,32 @@ public class FeriasService {
     }
 
 
-    public List<FeriasModel> searchFeriasVencendo(Integer numMaxMeses) {
-        List<FeriasModel> listPage = repository.getFeriasByNumMesesMax(numMaxMeses);
-        return listPage;
+    public ResultResponseList searchFeriasVencendo(Pageable paginacao,Integer numMaxMeses) {
+        Page<FeriasModel> listPage = repository.getFeriasByNumMesesMax(numMaxMeses,paginacao);
+
+        ResultResponseList resultResponseList = new ResultResponseList();
+
+
+        resultResponseList.setTotalElements(listPage.getTotalElements());
+        resultResponseList.setTotalPages(listPage.getTotalPages());
+
+        if(listPage.getContent()!=null)
+            resultResponseList.setData((List<Object>) (List) listPage.getContent());
+        else
+            resultResponseList.setData(null);
+
+
+        return resultResponseList;
     }
 
+    public ResultResponseList pesquisarFerias(Pageable paginacao, String pesquisa,String campo,String tipoPesquisa,String meses) {
+        if(tipoPesquisa.equals("all"))
+            return search(paginacao,pesquisa,campo);
+        else if (tipoPesquisa.equals("vencendo"))
+            return searchFeriasVencendo(paginacao,Integer.parseInt(meses));
+
+        return null;
+    }
 
 
 }

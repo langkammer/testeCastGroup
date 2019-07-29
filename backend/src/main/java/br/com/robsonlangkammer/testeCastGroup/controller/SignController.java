@@ -1,5 +1,6 @@
 package br.com.robsonlangkammer.testeCastGroup.controller;
 
+import br.com.robsonlangkammer.testeCastGroup.bean.EvenlopResponse;
 import br.com.robsonlangkammer.testeCastGroup.dto.TokenDto;
 import br.com.robsonlangkammer.testeCastGroup.form.LoginForm;
 import br.com.robsonlangkammer.testeCastGroup.form.UsuarioForm;
@@ -7,6 +8,7 @@ import br.com.robsonlangkammer.testeCastGroup.model.UserModel;
 import br.com.robsonlangkammer.testeCastGroup.repository.UsuarioRepository;
 import br.com.robsonlangkammer.testeCastGroup.security.TokenService;
 import br.com.robsonlangkammer.testeCastGroup.services.UserService;
+import br.com.robsonlangkammer.testeCastGroup.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,12 +18,13 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/sign")
-public class SignController {
+public class SignController extends ResponseFactory {
 
     @Autowired
     private UsuarioRepository userRepository;
@@ -66,6 +69,29 @@ public class SignController {
 
     }
 
+
+    @GetMapping
+    public EvenlopResponse get(
+            @RequestParam(value = "idUser", required = true, defaultValue = "") Long idUser){
+        try{
+            Optional<UserModel> u = userRepository.findById(idUser);
+
+            if(u.isPresent()){
+
+
+                return returnEnvelopSucesso(u,"Dado ok");
+            }
+
+            return returnEnvelopError("Error ....");
+
+
+        }
+        catch (Exception e){
+            return returnEnvelopError("Error ....");
+        }
+
+
+    }
 
 
 }

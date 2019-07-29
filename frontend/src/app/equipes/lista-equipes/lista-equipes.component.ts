@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { GenericService } from 'src/app/services/generic.service';
 import { CadEquipeComponent } from '../cad-equipe/cad-equipe.component';
 import { MsgService } from 'src/app/core/msg.service';
+import { SidenavService } from 'src/app/services/sidenav.service';
 
 @Component({
   selector: 'app-lista-equipes',
@@ -32,13 +33,18 @@ export class ListaEquipesComponent implements OnInit,AfterViewInit {
     private user:UserService,
     private service:GenericService,
     private msgService:MsgService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _sideNavService:SidenavService
 
   ) { }
 
   ngOnInit() {
-    if(!this.user.isLogged())
-      this.router.navigate(['login'])
+    this._sideNavService.getLogado().subscribe((logado:boolean) =>{
+      if(!logado)
+      {
+        this.router.navigate(['login'])
+      }
+    })
 
     this.dataSource = new EquipesDataSource(this.service);
 

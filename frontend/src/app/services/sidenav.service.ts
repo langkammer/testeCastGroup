@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs'
+import { UserService } from './user.service';
 
 
 @Injectable()
@@ -9,8 +10,12 @@ export class SidenavService {
   public sideNavState$: Subject<boolean> = new Subject();
   private logado = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
+  constructor(private user:UserService) {
+      if(this.user.isLogged)
+        this.logado.next(true);
+  }
 
+  
   getLogado() {
     return this.logado.asObservable();
   }

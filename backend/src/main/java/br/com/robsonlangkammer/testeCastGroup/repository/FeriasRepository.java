@@ -19,7 +19,7 @@ public interface FeriasRepository extends JpaRepository<FeriasModel, Long> {
     Page<FeriasModel> findByFuncionarioMatricula(@Param("matricula") Long matricula, Pageable pageable);
 
     @Query("select f from FeriasModel f where DATEDIFF ( MONTH , DATEADD(year, 2, f.dataFinal)  ,  GETDATE())  >= :numMeses")
-    List<FeriasModel> getFeriasByNumMesesMax(@Param("numMeses") Integer numMeses);
+    Page<FeriasModel> getFeriasByNumMesesMax(@Param("numMeses") Integer numMeses,Pageable pageable);
 
 
     @Query("select f from FeriasModel f where datediff(YEAR, f.dataFinal  , GETDATE())  >= :numAnos and f.funcionario.id = :idFuncionario")

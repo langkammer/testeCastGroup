@@ -10,13 +10,49 @@
 
 <div class="panel panel-default">
 <div class="panel-body">
-  <div class="row">
-      <div class="col-md-6">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Buscar" [(ngModel)]="nome" (keyup.enter)="loadPages()">
-          </mat-form-field>
+   <div class="row">
+      <div class="col-md-3" [ngClass]="{btnClicked: tipoPesquisa == 'vencendo'}">
+          <button color="primary"  mat-mini-fab aria-label="Vencendo" (click)="trocaTipoLista('vencendo')">
+              <mat-icon>warning</mat-icon>
+          </button>
+          <span>   Vencendo</span>
+      </div>
+      <div class="col-md-3"  [ngClass]="{btnClicked: tipoPesquisa == 'all'}">
+          <button color="primary"  mat-mini-fab aria-label="Vencendo" (click)="trocaTipoLista('all')">
+              <mat-icon>done_all</mat-icon>
+          </button>
+          <span>   Todos </span>
       </div>
       <div class="col-md-6">
+          <mat-form-field>
+              <mat-label>Meses</mat-label>
+              <mat-select matNativeControl class="full-width"  [(value)]="meses">
+                  <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12]"  [(value)]="meses">
+                      <div *ngIf="number == 1" >{{number}} Mes</div>
+                      <div *ngIf="number > 1" >{{number}} Meses</div>
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-md-3">
+        <mat-form-field>
+            <mat-label>Campo</mat-label>
+            <mat-select matNativeControl class="full-width" [(value)]="campo">
+                <mat-option  value="nome" >Nome</mat-option>
+                <mat-option  value="matricula" >Matricula</mat-option>
+            </mat-select>
+            
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Buscar" [(ngModel)]="pesquisa" (keyup.enter)="loadPages()">
+          </mat-form-field>
+      </div>
+      <div class="col-md-3">
           <button mat-raised-button color="accent" class="full-width" aria-label="Buscar" (click)="loadPages()">
               Buscar <mat-icon>search</mat-icon>
           </button>

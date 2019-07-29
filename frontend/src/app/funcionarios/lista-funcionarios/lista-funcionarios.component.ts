@@ -10,6 +10,7 @@ import { GenericService } from 'src/app/services/generic.service';
 import { BottonButtonComponent } from 'src/app/shared/bottom/bottom-button.component';
 import { CadFuncionarioComponent } from '../cad-funcionario/cad-funcionario.component';
 import { CadFeriasComponent } from 'src/app/ferias/cad-ferias/cad-ferias.component';
+import { SidenavService } from 'src/app/services/sidenav.service';
 
 @Component({
   selector: 'app-lista-funcionarios',
@@ -32,13 +33,18 @@ export class ListaFuncionariosComponent implements OnInit {
     private user:UserService,
     private service:GenericService,
     private msgService:MsgService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _sideNavService:SidenavService
 
   ) { }
 
   ngOnInit() {
-    if(!this.user.isLogged())
-      this.router.navigate(['login'])
+    this._sideNavService.getLogado().subscribe((logado:boolean) =>{
+      if(!logado)
+      {
+        this.router.navigate(['login'])
+      }
+    })
 
     this.dataSource = new FuncionariosDataSource(this.service);
 

@@ -55,6 +55,7 @@ public class FuncionarioService {
             ObjectMapper mapper = new ObjectMapper();
             FuncionarioModel funcionarioModel = mapper.readValue(funcString, FuncionarioModel.class);
             String fotoName =  fileStorageService.storeFile(foto);
+            funcionarioModel.setMatricula(repository.getNexMatricula() + 1);
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/funcionario/getFoto/")
                     .path(fotoName)

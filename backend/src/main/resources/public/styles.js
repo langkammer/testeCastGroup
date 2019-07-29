@@ -680,10 +680,10 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/robson/Documentos/projetos/testeCastGroup/frontend/src/styles.css */"./src/styles.css");
-__webpack_require__(/*! /home/robson/Documentos/projetos/testeCastGroup/frontend/src/assets/fonts/material-icons/material-icons.css */"./src/assets/fonts/material-icons/material-icons.css");
-__webpack_require__(/*! /home/robson/Documentos/projetos/testeCastGroup/frontend/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__(/*! /home/robson/Documentos/projetos/testeCastGroup/frontend/node_modules/font-awesome/css/font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
+__webpack_require__(/*! /home/robson/projetos/testeCastGroup/frontend/src/styles.css */"./src/styles.css");
+__webpack_require__(/*! /home/robson/projetos/testeCastGroup/frontend/src/assets/fonts/material-icons/material-icons.css */"./src/assets/fonts/material-icons/material-icons.css");
+__webpack_require__(/*! /home/robson/projetos/testeCastGroup/frontend/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+module.exports = __webpack_require__(/*! /home/robson/projetos/testeCastGroup/frontend/node_modules/font-awesome/css/font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
 
 
 /***/ })

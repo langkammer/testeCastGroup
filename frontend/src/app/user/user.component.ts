@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SidenavService } from '../services/sidenav.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  logado:boolean = false;
+
+  constructor(private _sideNavService:SidenavService,
+    private router: Router,
+    ) { }
 
   ngOnInit() {
+    this._sideNavService.getLogado().subscribe((logado:boolean) =>{
+      this.logado = logado;
+      if(!logado)
+      {
+        this.router.navigate(['login'])
+      }
+    })
   }
 
 }

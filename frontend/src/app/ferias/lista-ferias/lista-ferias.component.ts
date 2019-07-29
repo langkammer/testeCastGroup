@@ -11,6 +11,7 @@ import { BottonButtonComponent } from 'src/app/shared/bottom/bottom-button.compo
 import { CadFuncionarioComponent } from 'src/app/funcionarios/cad-funcionario/cad-funcionario.component';
 import { ScFeriasDataSource } from './sc-ferias-data.source';
 import { CadFeriasComponent } from '../cad-ferias/cad-ferias.component';
+import { SidenavService } from 'src/app/services/sidenav.service';
 
 @Component({
   selector: 'app-lista-ferias',
@@ -23,7 +24,13 @@ export class ListaFeriasComponent implements OnInit {
 
   dataSource: ScFeriasDataSource;
 
-  nome:string;
+  pesquisa:string;
+
+  campo:string = "nome";
+
+  tipoPesquisa:string = "all"
+
+  meses:number = 1;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -33,13 +40,18 @@ export class ListaFeriasComponent implements OnInit {
     private user:UserService,
     private service:GenericService,
     private msgService:MsgService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _sideNavService:SidenavService
 
   ) { }
 
   ngOnInit() {
-    if(!this.user.isLogged())
-      this.router.navigate(['login'])
+    this._sideNavService.getLogado().subscribe((logado:boolean) =>{
+      if(!logado)
+      {
+        this.router.navigate(['login'])
+      }
+    })
 
     this.dataSource = new ScFeriasDataSource(this.service);
 
@@ -50,6 +62,11 @@ export class ListaFeriasComponent implements OnInit {
     
   } 
 
+  trocaTipoLista(tipo){
+    this.tipoPesquisa = tipo;
+    this.loadPages();
+  }
+  
   openMenu(equipe:any): void {
     this.bottomSheet.open(BottonButtonComponent).afterDismissed().subscribe(
       sucess => {
@@ -89,7 +106,10 @@ export class ListaFeriasComponent implements OnInit {
     this.dataSource.load(
       this.paginator.pageIndex,
       this.paginator.pageSize,
-      this.nome);
+      this.pesquisa,
+      this.campo,
+      this.tipoPesquisa,
+      this.meses);
   }
 
   vaiParaMenu(tip,obj:any){

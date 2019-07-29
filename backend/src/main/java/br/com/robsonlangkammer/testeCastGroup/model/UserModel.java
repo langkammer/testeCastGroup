@@ -1,5 +1,6 @@
 package br.com.robsonlangkammer.testeCastGroup.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,6 +19,7 @@ public class UserModel  implements UserDetails {
 
     private String email;
 
+    @JsonIgnore
     private String pass;
 
     private String nome;
@@ -75,6 +77,7 @@ public class UserModel  implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public String getPassword() {
         return this.pass;
     }

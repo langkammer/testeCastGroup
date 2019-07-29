@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SidenavService } from '../../services/sidenav.service'
 import { onSideNavChange, animateText } from 'src/app/animations/animations';
 import { UserService } from 'src/app/services/user.service';
+import { GenericService } from 'src/app/services/generic.service';
 
 
 interface Page {
@@ -30,11 +31,36 @@ export class LeftMenuComponent implements OnInit {
 
   ]
 
-  constructor(private _sidenavService: SidenavService,private user: UserService) { }
+  constructor(private _sidenavService: SidenavService,
+    private user: UserService,
+    private service:GenericService) { }
 
   ngOnInit() {
     this.nameUser = this.user.getUserName();
+    this.user.getUser().subscribe((res:any) =>{
+      if(res){
+        this.getUserDecoded();
+      }
+      else{
+        this.nameUser = ""; 
+        this._sidenavService.deslogar();    
+      }
+    });
+
     console.log(this.nameUser)
+  }
+
+  getUserDecoded(){
+    let idUser = this.user.getIdUser();
+    this.getDadosUsuario(idUser);
+  }
+
+  getDadosUsuario(idUser:number){
+      this.service.getUsuario(idUser).subscribe((res:any) =>{
+        if(res.status == "SUCESSO")
+          this.nameUser = res.data.nome;
+      })
+   
   }
 
   onSinenavToggle() {

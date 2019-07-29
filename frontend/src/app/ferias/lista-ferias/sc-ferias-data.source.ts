@@ -25,17 +25,16 @@ export class ScFeriasDataSource implements DataSource<any> {
     disconnect(collectionViewer: CollectionViewer): void {
         this.listSubject.complete();
     }
-  
-    load(page = 0,size = 10, nome = "") {
-        console.log("Equipe");
-        this.service.listBySolicitacaoFerias(page,size,nome).pipe(
+
+    load(page = 0,size = 10, pesquisa = "",campo,tipoPesquisa,meses) {
+        this.service.listBySolicitacaoFerias(page,size,pesquisa,campo,tipoPesquisa,meses).pipe(
               catchError(() => of([])),
               finalize(() => this.loadingSubject.next(false))
           )
           .subscribe((res : ResponseBodyListInterface) => {
                       this.listSubject.next(res.data)
-                      this.totalElements = 0;
-                      this.totalPages    = 0;  
+                      this.totalElements = res.totalElements;
+                      this.totalPages    = res.totalPages;  
           });
     } 
 

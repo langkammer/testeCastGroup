@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Config } from '../config';
 import { Observable } from 'rxjs';
+import { SidenavService } from './sidenav.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthService {
 
   constructor(
     private userService: UserService,
-    private router: Router,
+    private sideService : SidenavService,
     private http: HttpClient)
     { }
 
@@ -33,6 +34,7 @@ export class AuthService {
               .subscribe((res : ResponseBodyInterface) => {
                 if(res.status == "SUCESSO"){
                   this.userService.setToken(res.data.token);
+                  this.sideService.logar();
                   console.log('User authenticated with token res.data.token');
                   return true;
                 }

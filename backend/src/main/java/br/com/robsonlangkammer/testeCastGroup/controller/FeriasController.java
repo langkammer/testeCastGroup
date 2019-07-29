@@ -29,38 +29,42 @@ public class FeriasController extends ResponseFactory {
     FuncionarioRepository repository;
 
 
-    @GetMapping(path = "/listByFeriasVencendo")
-    public EvenlopResponse listByFeriasVencendo(@RequestParam(value = "meses", required = false, defaultValue = "3") Integer meses,
-                                                @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
-        try{
-            return returnEnvelopSucesso(service.searchFeriasVencendo(meses),"Operação Realizada com Sucesso");
-        }
-        catch (Exception e){
-            return returnEnvelopError("Erro ao realizar a Operaçãp " + e.getMessage());
+//    @GetMapping(path = "/listByFeriasVencendo")
+//    public EvenlopResponse listByFeriasVencendo(@RequestParam(value = "meses", required = false, defaultValue = "3") Integer meses,
+//                                                @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
+//        try{
+//            return returnEnvelopSucesso(service.searchFeriasVencendo(meses),"Operação Realizada com Sucesso");
+//        }
+//        catch (Exception e){
+//            return returnEnvelopError("Erro ao realizar a Operaçãp " + e.getMessage());
+//
+//        }
+//    }
 
-        }
-    }
 
-
-    @GetMapping(path = "/listByMatricula")
-    public EvenlopResponse listFeriasByMatricula(@RequestParam(value = "matricula", required = false, defaultValue = "") Long matricula,
-                                                @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
-        try{
-            return returnEnvelopSucesso( service.searchByMatricula(paginacao,matricula),"Operação Realizada com Sucesso");
-        }
-        catch (Exception e){
-            return returnEnvelopError("Erro ao realizar a Operaçãp " + e.getMessage());
-
-        }
-    }
+//    @GetMapping(path = "/listByMatricula")
+//    public EvenlopResponse listFeriasByMatricula(@RequestParam(value = "matricula", required = false, defaultValue = "") Long matricula,
+//                                                @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
+//        try{
+//            return returnEnvelopSucesso( service.searchByMatricula(paginacao,matricula),"Operação Realizada com Sucesso");
+//        }
+//        catch (Exception e){
+//            return returnEnvelopError("Erro ao realizar a Operaçãp " + e.getMessage());
+//
+//        }
+//    }
 
     @GetMapping
     public EvenlopResponse list(
-            @RequestParam(value = "nome", required = false, defaultValue = "") String nome,
+            @RequestParam(value = "pesquisa", required = false, defaultValue = "") String pesquisa,
+            @RequestParam(value = "campo", required = false, defaultValue = "nome") String campo,
+            @RequestParam(value = "tipoPesquisa", required = false, defaultValue = "all") String tipoPesquisa,
+            @RequestParam(value = "meses", required = false, defaultValue = "1") String meses,
             @PageableDefault(sort = "id",direction = Sort.Direction.DESC, page = 0,size = 10) Pageable paginacao){
         try{
+            ResultResponseList r = new ResultResponseList();
 
-            ResultResponseList r = service.search(paginacao,nome);
+            r = service.pesquisarFerias(paginacao,pesquisa,campo,tipoPesquisa,meses);
 
             return returnEnvelopSucessoList(r.getData(),r.getTotalPages(),r.getTotalElements(),"Operação Realizada com Sucesso");
         }

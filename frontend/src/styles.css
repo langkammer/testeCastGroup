@@ -44,3 +44,7 @@ width: 100%;
 .column-right{
     text-align: right;
 }
+.btnClicked {
+  color: cadetblue;
+  background-color: #cccccc;
+}

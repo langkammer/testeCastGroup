@@ -1,3 +1,14 @@
-<p>
-  Usuario Logado!
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+      <div *ngIf="logado">
+        <p>
+          Usuario Logado!
+        </p>
+      </div>
+      <div *ngIf="!logado">
+        <p>
+          Usuario deslogado!
+        </p>
+      </div>
+  </div>
+</div>

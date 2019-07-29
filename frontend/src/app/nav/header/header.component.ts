@@ -21,10 +21,17 @@ export class HeaderComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.logado =  this.user.isLogged();
+    console.log("logar")
+    this._sidenavService.getLogado().subscribe((logou: boolean) => {
+        if(logou)
+          this.logado = true;
+        else
+          this.logado = false;  
+    })
   }
 
   deslogar(){
+    this._sidenavService.deslogar();
     this.user.logout();
     this.logado = this.user.isLogged();
   }
