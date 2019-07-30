@@ -11,7 +11,7 @@ Front End dentro da pasta front end rodar :
 2) ng serve
 
 ## Demo App Heroku
-https://teste-robson-cast-group.herokuapp.com/
+https://teste-robson-cast-group.herokuapp.com/index.html
 
 ## Demonstração
 ![](https://media.giphy.com/media/S4BKP8heoUiEsMjGuM/giphy.gif)
